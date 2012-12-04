@@ -100,3 +100,5 @@ class gage():
 			execute a partial query and then go further if need be
 		"""
 		pass
+
+# TODO: Create shortcut function for getting data from a station - single function
