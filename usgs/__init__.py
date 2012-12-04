@@ -102,3 +102,16 @@ class gage():
 		pass
 
 # TODO: Create shortcut function for getting data from a station - single function
+
+def retrieve_flow(user_gage_id=None, return_pandas = False):
+	"""
+		Helper function that initializes the gage for you, runs the necessary methods, and just returns the table. Takes
+		no date limiters so default is used. If you need to specify dates, please use the gage class
+	"""
+
+	if not user_gage_id:
+		raise ValueError("user_gage_id must be specified to use this helper function. If you want to initialize a gage"
+						 "without specifying an ID, please use the gage class")
+
+	t_gage = gage(user_gage_id)
+	return t_gage.retrieve(return_pandas=return_pandas)
