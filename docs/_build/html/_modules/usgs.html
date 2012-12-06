@@ -1,0 +1,204 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>usgs &mdash; USGS API 0.1a documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="USGS API 0.1a documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">USGS API 0.1a documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for usgs</h1><pre>
+__author__ = 'nicksantos'
+
+"""
+	Handles all interfacing with USGS, with the goal of making (parts) of their JSON
+	API available to Python as native objects
+"""
+
+import pandas
+import urllib
+import urllib2
+import json
+
+<div class="viewcode-block" id="gage"><a class="viewcode-back" href="../class_structure.html#usgs.gage">[docs]</a>class gage():
+<div class="viewcode-block" id="gage.__init__"><a class="viewcode-back" href="../class_structure.html#usgs.gage.__init__">[docs]</a>	def __init__(self, site_code = None, time_period = "P7D", url_params = {}):
+
+		self.site_code = site_code
+		self.time_series = None
+		self.time_period = time_period
+		self.url_params = url_params # optional dict of params - url key value pairs passed to the api
+		self.data_frame = None
+
+		self.startDT = None
+		self.endDT = None
+
+		self._json_string = None
+		self._base_url = "http://waterservices.usgs.gov/nwis/iv/"
+</div>
+<div class="viewcode-block" id="gage.check_params"><a class="viewcode-back" href="../class_structure.html#usgs.gage.check_params">[docs]</a>	def check_params(self, params = ('site_code',)):
+		"""
+			Makes sure that we have the base level of information necessary to run a query
+			to prevent lazy setup errors
+		"""
+
+		for param in params:
+			if self.__dict__[param] is None and param not in self.url_params:
+				raise AttributeError("Required attribute %s must be set or provided in url_params before running this method" % param)
+</div>
+<div class="viewcode-block" id="gage.retrieve"><a class="viewcode-back" href="../class_structure.html#usgs.gage.retrieve">[docs]</a>	def retrieve(self, return_pandas=False, automerge = True):
+		"""
+			runs the relevant private methods in sequence
+
+			:param:return_pandas: specifies whether or not to return the pandas object, or to return a standard
+		"""
+
+		# makes sure that the user didn't forget to set something after init
+		self.check_params()
+
+		self._retrieve_data()
+		self._json_to_dataframe(create_pandas = return_pandas)
+
+		if return_pandas:
+			return self.data_frame
+		else:
+			return self.time_series
+</div>
+	def _retrieve_data(self):
+		"""
+			requests retrieves, and stores the json
+		"""
+
+		# add the relevant parameters into the dictionary passed by the user (if any
+		self.url_params['format'] = "json"
+		self.url_params['sites'] = self.site_code
+
+		if self.time_period and not self.startDT and 'startDT' not in self.url_params:
+			# if we have a time period, but not a time range, use the period
+			self.url_params['period'] = self.time_period
+		else:
+			# otherwise, use the time range if it works (doesn't currently valdidate the dates
+			# TODO: Validate the date formats
+			self.check_params(('startDT','endDT')) # it's possible that they won't be defined
+
+			self.url_params['startDT'] = self.startDT
+			self.url_params['endDT'] = self.endDT
+
+		# merge parameters into the url
+		request_url = self._base_url + "?" + urllib.urlencode(self.url_params)
+
+		# open the url and read in the json string to a private variable
+		request = urllib2.Request(request_url)
+		data_stream = urllib2.urlopen(request)
+		self._json_string = data_stream.read()
+
+		self._json_data = json.loads(self._json_string)
+
+	def _json_to_dataframe(self, create_pandas = False):
+		"""
+			converts the json to a pandas data frame
+		"""
+		self.time_series = self._json_data['value']['timeSeries'][0]['values'][0]['value']
+
+		if create_pandas:
+			self.data_frame = pandas.DataFrame(self.time_series)
+
+
+	def _merge_with_existing(self):
+		"""
+			if we execute a request when we already have data, this method attempts
+			to merge the two datasets into a single time series so you can effectively
+			execute a partial query and then go further if need be
+		"""
+		pass
+
+# TODO: Create shortcut function for getting data from a station - single function
+</div>
+def retrieve_flow(user_gage_id=None, return_pandas = False):
+	"""
+		Helper function that initializes the gage for you, runs the necessary methods, and just returns the table. Takes
+		no date limiters so default is used. If you need to specify dates, please use the gage class
+	"""
+
+	if not user_gage_id:
+		raise ValueError("user_gage_id must be specified to use this helper function. If you want to initialize a gage"
+						 "without specifying an ID, please use the gage class")
+
+	t_gage = gage(user_gage_id)
+	return t_gage.retrieve(return_pandas=return_pandas)</pre>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">USGS API 0.1a documentation</a> &raquo;</li>
+          <li><a href="index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Nick Santos.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

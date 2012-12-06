@@ -12,6 +12,7 @@ Contents:
     :maxdepth: 2
 
     usage
+    class_structure
 
 Indices and tables
 ==================

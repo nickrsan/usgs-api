@@ -1,0 +1,145 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Methods and Shortcut Functions &mdash; USGS API 0.1a documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="USGS API 0.1a documentation" href="index.html" />
+    <link rel="prev" title="Structure and Usage of the USGS API" href="usage.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="usage.html" title="Structure and Usage of the USGS API"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">USGS API 0.1a documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="class-methods-and-shortcut-functions">
+<h1>Class Methods and Shortcut Functions<a class="headerlink" href="#class-methods-and-shortcut-functions" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="usgs.gage">
+<em class="property">class </em><tt class="descclassname">usgs.</tt><tt class="descname">gage</tt><big>(</big><em>site_code=None</em>, <em>time_period='P7D'</em>, <em>url_params={}</em><big>)</big><a class="reference internal" href="_modules/usgs.html#gage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#usgs.gage" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="usgs.gage.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>site_code=None</em>, <em>time_period='P7D'</em>, <em>url_params={}</em><big>)</big><a class="reference internal" href="_modules/usgs.html#gage.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#usgs.gage.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>site_code</strong> &#8211; A USGS Site code for the gage this object represents. See <a class="reference external" href="http://help.waterdata.usgs.gov/codes-and-parameters/codes#search_station_nm">the USGS documentation</a></li>
+<li><strong>time_period</strong> &#8211; A compatible period string as specified in
+<a class="reference external" href="http://waterservices.usgs.gov/rest/IV-Service.html#Specifying">the USGS time period documentation</a> - this parameter
+only accepts &#8220;period&#8221; values as explained in that documentation. If you would like to specify a time range
+using startDT and endDT please use the url_params argument. If you specify both, current behavior
+uses the time period as being more specific. An exception will not be raised.</li>
+<li><strong>url_params</strong> &#8211; A dictionary of other parameters to pass to the USGS server in key/value format. They
+will be automatically added to the query. Case sensitive. For a full list of parameters, see
+<a class="reference external" href="http://waterservices.usgs.gov/rest/IV-Service.html">the USGS web service documentation</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="usgs.gage.retrieve">
+<tt class="descname">retrieve</tt><big>(</big><em>return_pandas=False</em>, <em>automerge=True</em><big>)</big><a class="reference internal" href="_modules/usgs.html#gage.retrieve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#usgs.gage.retrieve" title="Permalink to this definition">¶</a></dt>
+<dd><p>runs the relevant private methods in sequence</p>
+<p>:param:return_pandas: specifies whether or not to return the pandas object, or to return a standard</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="usgs.gage.check_params">
+<tt class="descname">check_params</tt><big>(</big><em>params=('site_code'</em>, <em>)</em><big>)</big><a class="reference internal" href="_modules/usgs.html#gage.check_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#usgs.gage.check_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes sure that we have the base level of information necessary to run a query
+to prevent lazy setup errors</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="previous chapter">Structure and Usage of the USGS API</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/class_structure.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="usage.html" title="Structure and Usage of the USGS API"
+             >previous</a> |</li>
+        <li><a href="index.html">USGS API 0.1a documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Nick Santos.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

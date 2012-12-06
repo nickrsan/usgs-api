@@ -12,6 +12,18 @@ import json
 
 class gage():
 	def __init__(self, site_code = None, time_period = "P7D", url_params = {}):
+		"""
+		:param site_code: A USGS Site code for the gage this object represents. See `the USGS documentation
+			<http://help.waterdata.usgs.gov/codes-and-parameters/codes#search_station_nm>`_
+		:param time_period: A compatible period string as specified in
+			`the USGS time period documentation <http://waterservices.usgs.gov/rest/IV-Service.html#Specifying>`_ - this parameter
+			only accepts "period" values as explained in that documentation. If you would like to specify a time range
+			using startDT and endDT please use the url_params argument. If you specify both, current behavior
+			uses the time period as being more specific. An exception will not be raised.
+		:param url_params: A dictionary of other parameters to pass to the USGS server in key/value format. They
+			will be automatically added to the query. Case sensitive. For a full list of parameters, see
+			`the USGS web service documentation <http://waterservices.usgs.gov/rest/IV-Service.html>`_
+		"""
 
 		self.site_code = site_code
 		self.time_series = None
