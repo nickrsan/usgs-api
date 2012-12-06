@@ -5,3 +5,5 @@ Class Methods and Shortcut Functions
 
 .. autoclass:: gage
    :members: __init__, retrieve, check_params
+
+.. autofunction:: retrieve_flow

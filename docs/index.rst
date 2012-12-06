@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to USGS API's documentation!
+USGS API Wrapper documentation
 ====================================
 
 Contents:
@@ -11,7 +11,6 @@ Contents:
 .. toctree::
     :maxdepth: 2
 
-    usage
     class_structure
 
 Indices and tables

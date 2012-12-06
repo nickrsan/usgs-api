@@ -49,9 +49,14 @@ class gage():
 
 	def retrieve(self, return_pandas=False, automerge = True):
 		"""
-			runs the relevant private methods in sequence
+			Retrieves data from the server based upon class configuration. Returns the a list of dicts by default,
+				with keys set by the returned data from the server. If return_pandas is True, returns a pandas data frame.
 
-			:param return_pandas: specifies whether or not to return the pandas object, or to return a standard
+			:param return_pandas: specifies whether or not to return the pandas object. When True, returns a pandas
+				object. When False, returns the default list of dicts.
+			:param automerge: Not yet implemented! Warning! Intent is that when returning a pandas table, automerge
+			    will allow you to run multiple separate requests for the same gage (different time series with gaps, etc)
+			    and merge them into a single result for the gage
 		"""
 
 		# makes sure that the user didn't forget to set something after init
@@ -115,15 +120,20 @@ class gage():
 
 # TODO: Create shortcut function for getting data from a station - single function
 
-def retrieve_flow(user_gage_id=None, return_pandas = False):
+def retrieve_flow(gage_id=None, return_pandas = False):
 	"""
-		Helper function that initializes the gage for you, runs the necessary methods, and just returns the table. Takes
-		no date limiters so default is used. If you need to specify dates, please use the gage class
+		Helper function that initializes the gage for you, runs the necessary methods, and returns the table (list of dicts).
+		Takes no date limiters so default is used. If you need to specify dates, please use the gage class.
+
+		:param gage_id: The USGS id for the gage
+		:param return_pandas: specifies whether or not to return the pandas object. When True, returns a pandas
+				object. When False, returns the default list of dicts.
+
 	"""
 
-	if not user_gage_id:
+	if not gage_id:
 		raise ValueError("user_gage_id must be specified to use this helper function. If you want to initialize a gage"
 						 "without specifying an ID, please use the gage class")
 
-	t_gage = gage(user_gage_id)
+	t_gage = gage(gage_id)
 	return t_gage.retrieve(return_pandas=return_pandas)
