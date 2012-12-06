@@ -51,7 +51,7 @@ class gage():
 		"""
 			runs the relevant private methods in sequence
 
-			:param:return_pandas: specifies whether or not to return the pandas object, or to return a standard
+			:param return_pandas: specifies whether or not to return the pandas object, or to return a standard
 		"""
 
 		# makes sure that the user didn't forget to set something after init
