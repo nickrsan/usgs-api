@@ -5,10 +5,14 @@ __author__ = 'nicksantos'
 	API available to Python as native objects
 """
 
-import pandas
 import urllib
 import urllib2
 import json
+
+try:
+	import pandas
+except:
+	pass # silently fail - user won't care. Once we add a more robust logging option, we can silently log
 
 class gage():
 	def __init__(self, site_code = None, time_period = "P7D", url_params = {}):
@@ -53,13 +57,18 @@ class gage():
 				with keys set by the returned data from the server. If return_pandas is True, returns a pandas data frame.
 
 			:param return_pandas: specifies whether or not to return the pandas object. When True, returns a pandas
-				object. When False, returns the default list of dicts.
+				object. When False, returns the default list of dicts. If you have not installed pandas, will raise
+				ValueError
 			:param automerge: Not yet implemented! Warning! Intent is that when returning a pandas table, automerge
 			    will allow you to run multiple separate requests for the same gage (different time series with gaps, etc)
 			    and merge them into a single result for the gage
 		"""
 
 		# makes sure that the user didn't forget to set something after init
+
+		if return_pandas and not pandas: # do this first so we don't find out AFTER doing everything else
+			_pandas_no_exist()
+
 		self.check_params()
 
 		self._retrieve_data()
@@ -127,13 +136,22 @@ def retrieve_flow(gage_id=None, return_pandas = False):
 
 		:param gage_id: The USGS id for the gage
 		:param return_pandas: specifies whether or not to return the pandas object. When True, returns a pandas
-				object. When False, returns the default list of dicts.
+				object. When False, returns the default list of dicts. If you have not installed pandas, will raise
+				ValueError
 
 	"""
 
+	if return_pandas and not pandas:
+		_pandas_no_exist()
+
 	if not gage_id:
-		raise ValueError("user_gage_id must be specified to use this helper function. If you want to initialize a gage"
-						 "without specifying an ID, please use the gage class")
+		raise ValueError("gage_id must be specified to use this helper function. If you want to initialize a gage"
+						 " without specifying an ID, please use the gage class")
 
 	t_gage = gage(gage_id)
 	return t_gage.retrieve(return_pandas=return_pandas)
+
+
+def _pandas_no_exist():
+	raise ValueError("Pandas could not be imported, cannot return pandas object. Try again after checking"
+	                 " that the pandas module is correctly installed or using return_pandas = False")
