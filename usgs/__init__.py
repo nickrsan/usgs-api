@@ -54,10 +54,10 @@ class gage():
 	def retrieve(self, return_pandas=False, automerge = True):
 		"""
 			Retrieves data from the server based upon class configuration. Returns the a list of dicts by default,
-				with keys set by the returned data from the server. If return_pandas is True, returns a pandas data frame.
+			with keys set by the returned data from the server. If return_pandas is True, returns a pandas data frame.
 
 			:param return_pandas: specifies whether or not to return the pandas object. When True, returns a pandas
-				object. When False, returns the default list of dicts. If you have not installed pandas, will raise
+				object. When False, returns the default list of dicts. If True and you have not installed pandas, will raise
 				ValueError
 			:param automerge: Not yet implemented! Warning! Intent is that when returning a pandas table, automerge
 			    will allow you to run multiple separate requests for the same gage (different time series with gaps, etc)
@@ -136,7 +136,7 @@ def retrieve_flow(gage_id=None, return_pandas = False):
 
 		:param gage_id: The USGS id for the gage
 		:param return_pandas: specifies whether or not to return the pandas object. When True, returns a pandas
-				object. When False, returns the default list of dicts. If you have not installed pandas, will raise
+				object. When False, returns the default list of dicts. If True and you have not installed pandas, will raise
 				ValueError
 
 	"""
