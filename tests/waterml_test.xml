@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:timeSeriesResponse xsi:schemaLocation="http://www.cuahsi.org/waterML/1.1/ http://waterservices.usgs.gov/WaterML-1.1.xsd" xmlns:ns1="http://www.cuahsi.org/waterML/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ns1:queryInfo xmlns:ns2="http://www.cuahsi.org/waterML/1.1/">
+        <ns2:creationTime>2012-12-20T15:29:26</ns2:creationTime>
+        <ns2:queryURL>http://waterservices.usgs.gov/nwis/iv/</ns2:queryURL>
+        <ns2:criteria>
+            <ns2:locationParam>[ALL:01646500]</ns2:locationParam>
+            <ns2:variableParam>[00060, 00065]</ns2:variableParam>
+        </ns2:criteria>
+        <ns2:note title="filter:sites">[ALL:01646500]</ns2:note>
+        <ns2:note title="filter:timeRange">[mode=PERIOD, period=P1D, modifiedSince=null]</ns2:note>
+        <ns2:note title="filter:methodId">methodIds=[ALL]</ns2:note>
+        <ns2:note title="requestDT">2012-12-20T20:29:26.057Z</ns2:note>
+        <ns2:note title="requestId">f278a280-4ae3-11e2-b2ab-6cae8b6642ea</ns2:note>
+        <ns2:note title="disclaimer">Provisional data are subject to revision. Go to http://waterdata.usgs.gov/nwis/help/?provisional for more information.</ns2:note>
+        <ns2:note title="server">sdas01</ns2:note>
+    </ns1:queryInfo>
+    <ns1:timeSeries name="USGS:01646500:00060:00011" xmlns:ns1="http://www.cuahsi.org/waterML/1.1/">
+        <ns1:sourceInfo xsi:type="ns1:SiteInfoType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ns1:siteName>POTOMAC RIVER NEAR WASH, DC LITTLE FALLS PUMP STA</ns1:siteName>
+            <ns1:siteCode network="NWIS" agencyCode="USGS">01646500</ns1:siteCode>
+            <ns1:timeZoneInfo siteUsesDaylightSavingsTime="false">
+                <ns1:defaultTimeZone zoneOffset="-05:00" zoneAbbreviation="EST"/>
+                <ns1:daylightSavingsTimeZone zoneOffset="-04:00" zoneAbbreviation="EDT"/>
+            </ns1:timeZoneInfo>
+            <ns1:geoLocation>
+                <ns1:geogLocation xsi:type="ns1:LatLonPointType" srs="EPSG:4326">
+                    <ns1:latitude>38.94977778</ns1:latitude>
+                    <ns1:longitude>-77.12763889</ns1:longitude>
+                </ns1:geogLocation>
+            </ns1:geoLocation>
+            <ns1:siteProperty name="siteTypeCd">ST</ns1:siteProperty>
+            <ns1:siteProperty name="hucCd">02070008</ns1:siteProperty>
+            <ns1:siteProperty name="stateCd">24</ns1:siteProperty>
+            <ns1:siteProperty name="countyCd">24031</ns1:siteProperty>
+        </ns1:sourceInfo>
+        <ns1:variable ns1:oid="45807197">
+            <ns1:variableCode network="NWIS" vocabulary="NWIS:UnitValues" default="true" variableID="45807197">00060</ns1:variableCode>
+            <ns1:variableName>Streamflow, ft&amp;#179;/s</ns1:variableName>
+            <ns1:variableDescription>Discharge, cubic feet per second</ns1:variableDescription>
+            <ns1:valueType>Derived Value</ns1:valueType>
+            <ns1:unit>
+                <ns1:unitCode>cfs</ns1:unitCode>
+            </ns1:unit>
+            <ns1:options>
+                <ns1:option name="Statistic" optionCode="00011"/>
+            </ns1:options>
+            <ns1:noDataValue>-999999.0</ns1:noDataValue>
+        </ns1:variable>
+        <ns1:values>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T15:30:00.000-05:00">4420</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T15:45:00.000-05:00">4420</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T16:00:00.000-05:00">4420</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T16:15:00.000-05:00">4360</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T16:30:00.000-05:00">4420</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T16:45:00.000-05:00">4420</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T17:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T17:15:00.000-05:00">4420</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T17:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T17:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T18:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T18:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T18:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T18:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T19:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T19:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T19:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T19:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T20:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T20:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T20:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T20:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T21:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T21:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T21:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T21:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T22:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T22:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T22:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T22:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T23:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T23:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T23:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-19T23:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T00:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T00:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T00:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T00:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T01:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T01:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T01:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T01:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T02:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T02:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T02:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T02:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T03:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T03:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T03:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T03:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T04:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T04:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T04:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T04:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T05:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T05:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T05:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T05:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T06:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T06:15:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T06:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T06:45:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T07:00:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T07:15:00.000-05:00">4550</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T07:30:00.000-05:00">4480</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T07:45:00.000-05:00">4550</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T08:00:00.000-05:00">4550</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T08:15:00.000-05:00">4550</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T08:30:00.000-05:00">4550</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T08:45:00.000-05:00">4550</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T09:00:00.000-05:00">4550</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T09:15:00.000-05:00">4550</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T09:30:00.000-05:00">4550</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T09:45:00.000-05:00">4550</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T10:00:00.000-05:00">4550</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T10:15:00.000-05:00">4550</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T10:30:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T10:45:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T11:00:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T11:15:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T11:30:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T11:45:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T12:00:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T12:15:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T12:30:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T12:45:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T13:00:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T13:15:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T13:30:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T13:45:00.000-05:00">4680</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T14:00:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T14:15:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T14:30:00.000-05:00">4610</ns1:value>
+            <ns1:value qualifiers="P" dateTime="2012-12-20T14:45:00.000-05:00">4610</ns1:value>
+            <ns1:qualifier qualifierID="0" ns1:network="NWIS" ns1:vocabulary="uv_rmk_cd">
+                <ns1:qualifierCode>P</ns1:qualifierCode>
+                <ns1:qualifierDescription>Provisional data subject to revision.</ns1:qualifierDescription>
+            </ns1:qualifier>
+            <ns1:method methodID="1">
+                <ns1:methodDescription></ns1:methodDescription>
+            </ns1:method>
+        </ns1:values>
+    </ns1:timeSeries><ns1:timeSeries name="USGS:01646500:00065:00011" xmlns:ns1="http://www.cuahsi.org/waterML/1.1/">
+    <ns1:sourceInfo xsi:type="ns1:SiteInfoType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns1:siteName>POTOMAC RIVER NEAR WASH, DC LITTLE FALLS PUMP STA</ns1:siteName>
+        <ns1:siteCode network="NWIS" agencyCode="USGS">01646500</ns1:siteCode>
+        <ns1:timeZoneInfo siteUsesDaylightSavingsTime="false">
+            <ns1:defaultTimeZone zoneOffset="-05:00" zoneAbbreviation="EST"/>
+            <ns1:daylightSavingsTimeZone zoneOffset="-04:00" zoneAbbreviation="EDT"/>
+        </ns1:timeZoneInfo>
+        <ns1:geoLocation>
+            <ns1:geogLocation xsi:type="ns1:LatLonPointType" srs="EPSG:4326">
+                <ns1:latitude>38.94977778</ns1:latitude>
+                <ns1:longitude>-77.12763889</ns1:longitude>
+            </ns1:geogLocation>
+        </ns1:geoLocation>
+        <ns1:siteProperty name="siteTypeCd">ST</ns1:siteProperty>
+        <ns1:siteProperty name="hucCd">02070008</ns1:siteProperty>
+        <ns1:siteProperty name="stateCd">24</ns1:siteProperty>
+        <ns1:siteProperty name="countyCd">24031</ns1:siteProperty>
+    </ns1:sourceInfo>
+    <ns1:variable ns1:oid="45807202">
+        <ns1:variableCode network="NWIS" vocabulary="NWIS:UnitValues" default="true" variableID="45807202">00065</ns1:variableCode>
+        <ns1:variableName>Gage height, ft</ns1:variableName>
+        <ns1:variableDescription>Gage height, feet</ns1:variableDescription>
+        <ns1:valueType>Derived Value</ns1:valueType>
+        <ns1:unit>
+            <ns1:unitCode>ft</ns1:unitCode>
+        </ns1:unit>
+        <ns1:options>
+            <ns1:option name="Statistic" optionCode="00011"/>
+        </ns1:options>
+        <ns1:noDataValue>-999999.0</ns1:noDataValue>
+    </ns1:variable>
+    <ns1:values>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T15:30:00.000-05:00">3.27</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T15:45:00.000-05:00">3.27</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T16:00:00.000-05:00">3.27</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T16:15:00.000-05:00">3.26</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T16:30:00.000-05:00">3.27</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T16:45:00.000-05:00">3.27</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T17:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T17:15:00.000-05:00">3.27</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T17:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T17:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T18:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T18:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T18:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T18:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T19:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T19:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T19:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T19:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T20:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T20:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T20:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T20:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T21:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T21:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T21:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T21:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T22:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T22:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T22:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T22:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T23:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T23:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T23:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-19T23:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T00:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T00:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T00:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T00:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T01:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T01:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T01:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T01:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T02:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T02:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T02:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T02:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T03:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T03:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T03:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T03:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T04:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T04:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T04:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T04:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T05:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T05:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T05:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T05:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T06:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T06:15:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T06:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T06:45:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T07:00:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T07:15:00.000-05:00">3.29</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T07:30:00.000-05:00">3.28</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T07:45:00.000-05:00">3.29</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T08:00:00.000-05:00">3.29</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T08:15:00.000-05:00">3.29</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T08:30:00.000-05:00">3.29</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T08:45:00.000-05:00">3.29</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T09:00:00.000-05:00">3.29</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T09:15:00.000-05:00">3.29</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T09:30:00.000-05:00">3.29</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T09:45:00.000-05:00">3.29</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T10:00:00.000-05:00">3.29</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T10:15:00.000-05:00">3.29</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T10:30:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T10:45:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T11:00:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T11:15:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T11:30:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T11:45:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T12:00:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T12:15:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T12:30:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T12:45:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T13:00:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T13:15:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T13:30:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T13:45:00.000-05:00">3.31</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T14:00:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T14:15:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T14:30:00.000-05:00">3.30</ns1:value>
+        <ns1:value qualifiers="P" dateTime="2012-12-20T14:45:00.000-05:00">3.30</ns1:value>
+        <ns1:qualifier qualifierID="0" ns1:network="NWIS" ns1:vocabulary="uv_rmk_cd">
+            <ns1:qualifierCode>P</ns1:qualifierCode>
+            <ns1:qualifierDescription>Provisional data subject to revision.</ns1:qualifierDescription>
+        </ns1:qualifier>
+        <ns1:method methodID="2">
+            <ns1:methodDescription></ns1:methodDescription>
+        </ns1:method>
+    </ns1:values>
+</ns1:timeSeries></ns1:timeSeriesResponse>
