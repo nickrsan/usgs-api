@@ -8,14 +8,29 @@ __author__ = 'nicksantos'
 import urllib
 import urllib2
 import json
+from StringIO import StringIO
+import gzip
+from datetime import datetime
+from logging import getLogger
+
+log = getLogger("usgs_api")
+log.info("usgs api loaded")
 
 try:
 	import pandas
-except:
-	pass # silently fail - user won't care. Once we add a more robust logging option, we can silently log
+except ImportError:
+	log.info("failed to import pandas. Pandas object functionality will be unavailable (naturally). Install the 'pandas'"
+			 "module if you need pandas/scientific functionality")
+	pass  # pass - user should not be concerned.
+
+config_max_windows = 52  # 52 * 2 weeks = 2 years - if window size changes, then this is just a multiplier for how many
+						# times to batch the request
+config_window_size = 14  # days
+config_min_timestamp = 1191196800
+
 
 class gage():
-	def __init__(self, site_code = None, time_period = "P7D", url_params = {}):
+	def __init__(self, site_code=None, time_period="P7D", url_params={}, start_timestamp=None, end_timestamp=None):
 		"""
 		:param site_code: A USGS Site code for the gage this object represents. See `the USGS documentation
 			<http://help.waterdata.usgs.gov/codes-and-parameters/codes#search_station_nm>`_
@@ -32,16 +47,21 @@ class gage():
 		self.site_code = site_code
 		self.time_series = None
 		self.time_period = time_period
-		self.url_params = url_params # optional dict of params - url key value pairs passed to the api
+		self.url_params = url_params  # optional dict of params - url key value pairs passed to the api
 		self.data_frame = None
 
 		self.startDT = None
 		self.endDT = None
 
+		self.start_timestamp = start_timestamp
+		self.end_timestamp = end_timestamp
+
+		self.batch = False
+
 		self._json_string = None
 		self._base_url = "http://waterservices.usgs.gov/nwis/iv/"
 
-	def check_params(self, params = ('site_code',)):
+	def check_params(self, params=('site_code',)):
 		"""
 			Makes sure that we have the base level of information necessary to run a query
 			to prevent lazy setup errors
@@ -51,7 +71,9 @@ class gage():
 			if self.__dict__[param] is None and param not in self.url_params:
 				raise AttributeError("Required attribute %s must be set or provided in url_params before running this method" % param)
 
-	def retrieve(self, return_pandas=False, automerge = True):
+		if self.startDT and self.start_timestamp:
+
+	def retrieve(self, return_pandas=False, automerge=True):
 		"""
 			Retrieves data from the server based upon class configuration. Returns the a list of dicts by default,
 			with keys set by the returned data from the server. If return_pandas is True, returns a pandas data frame.
@@ -66,13 +88,17 @@ class gage():
 
 		# makes sure that the user didn't forget to set something after init
 
-		if return_pandas and not pandas: # do this first so we don't find out AFTER doing everything else
+		if return_pandas and not pandas:  # do this first so we don't find out AFTER doing everything else
 			_pandas_no_exist()
 
-		self.check_params()
+		self.batch = self.check_params()  # TODO: Make check_params determine if it's a multiwindow query
 
-		self._retrieve_data()
-		self._json_to_dataframe(create_pandas = return_pandas)
+		if self.batch:  # if we need to retrieve multiple windows, then call the batching function
+			self._batch()
+		else:  # otherwise, if the time period is short enough, just retrieve the data
+			self._retrieve_data()
+
+		self._json_to_dataframe(create_pandas=return_pandas)
 
 		if return_pandas:
 			return self.data_frame
@@ -92,9 +118,9 @@ class gage():
 			# if we have a time period, but not a time range, use the period
 			self.url_params['period'] = self.time_period
 		else:
-			# otherwise, use the time range if it works (doesn't currently valdidate the dates
+			# otherwise, use the time range if it works (doesn't currently validate the dates)
 			# TODO: Validate the date formats
-			self.check_params(('startDT','endDT')) # it's possible that they won't be defined
+			self.check_params(('startDT', 'endDT'))  # it's possible that they won't be defined
 
 			self.url_params['startDT'] = self.startDT
 			self.url_params['endDT'] = self.endDT
@@ -104,8 +130,15 @@ class gage():
 
 		# open the url and read in the json string to a private variable
 		request = urllib2.Request(request_url)
+		request.add_header('Accept-encoding', 'gzip')  # be kind to the USGS servers - see http://waterservices.usgs.gov/rest/IV-Service.html#gzip
+
 		data_stream = urllib2.urlopen(request)
-		self._json_string = data_stream.read()
+		if data_stream.info().get('Content-Encoding') == 'gzip':  # with thanks to StackOverflow for the efficient code
+			buf = StringIO(data_stream.read())
+			f = gzip.GzipFile(fileobj=buf)
+			self._json_string = f.read()
+		else:
+			self._json_string = data_stream.read()
 
 		self._json_data = json.loads(self._json_string)
 
@@ -118,7 +151,6 @@ class gage():
 		if create_pandas:
 			self.data_frame = pandas.DataFrame(self.time_series)
 
-
 	def _merge_with_existing(self):
 		"""
 			if we execute a request when we already have data, this method attempts
@@ -126,6 +158,29 @@ class gage():
 			execute a partial query and then go further if need be
 		"""
 		pass
+
+	def _batch(self):
+		"""
+			Automatically batches time windows of more than seven days
+		"""
+
+		orig_startDT = self.startDT
+		orig_endDT = self.endDT
+		orig_time_period = self.time_period
+
+		if type(self.startDT) is not int or type(self.endDT) is not int:
+			raise ValueError("Cannot batch and merge queries without integer unix timestamps in startDT and endDT")
+
+		# TODO: make it check the start timestamp for if it's before the minimum configured time, then create windows
+		# and loop through them as individual requests, and merge their data together.
+
+	def retrieve_to_csv(self, file_path=None):
+		"""
+			Retrieves the data automatically to a CSV file
+		"""
+
+		if not file_path:
+			raise ValueError("No path specified")
 
 # TODO: Create shortcut function for getting data from a station - single function
 
