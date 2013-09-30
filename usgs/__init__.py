@@ -71,7 +71,9 @@ class gage():
 			if self.__dict__[param] is None and param not in self.url_params:
 				raise AttributeError("Required attribute %s must be set or provided in url_params before running this method" % param)
 
-		if self.startDT and self.start_timestamp:
+		#if self.startDT and self.start_timestamp:
+		#	pass
+		# 	both above lines are placeholders from a previous commit that was partway through. 
 
 	def retrieve(self, return_pandas=False, automerge=True):
 		"""
